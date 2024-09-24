@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-10-07T17:27:08-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dank Guides</title><subtitle>Dank guides for retro gaming.
+</subtitle><author><name>DankGuides</name></author><entry><title type="html">Installing Windows 3.1 in DOSBox</title><link href="http://localhost:4000/guides/windows-3-1-in-dosbox" rel="alternate" type="text/html" title="Installing Windows 3.1 in DOSBox" /><published>2024-10-08T00:00:00-04:00</published><updated>2024-10-08T00:00:00-04:00</updated><id>http://localhost:4000/guides/windows-3.1-in-dosbox</id><content type="html" xml:base="http://localhost:4000/guides/windows-3-1-in-dosbox">&lt;p&gt;&lt;sub&gt;&lt;em&gt;Last updated: 2024-10-08&lt;/em&gt;&lt;/sub&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;contents&quot;&gt;Contents&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#requirements&quot;&gt;Requirements&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#prep&quot;&gt;Prep&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hard-disk-image-creation&quot;&gt;Hard Disk Image creation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#installation&quot;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#usage&quot;&gt;Usage&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#notes&quot;&gt;Notes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;requirements&quot;&gt;Requirements:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dosbox-x.com/&quot;&gt;DOSBox-X&lt;/a&gt; – This is not a hard requirement, as &lt;em&gt;most&lt;/em&gt; of this can be done in stock DOSBox. DOSBox-X makes it a lot easier though.&lt;/li&gt;
+  &lt;li&gt;A bootable Windows 3.1 install iso&lt;/li&gt;
+  &lt;li&gt;S3 Trio64 video drivers for Windows 3.1&lt;/li&gt;
+  &lt;li&gt;Sound Blaster 16 drivers&lt;/li&gt;
+  &lt;li&gt;An appropriately-sized empty HDD disk image. You can create one via DOSBox-X or use one of the provided images.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;prep&quot;&gt;Prep:&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create a new folder to hold everything. We will refer to this folder as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root&lt;/code&gt; throughout this guide.&lt;/li&gt;
+  &lt;li&gt;Download the files from here: &lt;a href=&quot;https://archive.org/details/windows-3.11-in-dosbox&quot;&gt;https://archive.org/details/windows-3.11-in-dosbox&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Place the following files in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root&lt;/code&gt; folder:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Windows 3.11.iso&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;S3_Trio64V+_Binary-775-785__Win_3.1_English_v._1.70.04_-_PROD.zip&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SB16W3X.ZIP&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;If you wish to use one of the provided HDD images, unzip the appropriate &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hdd-*.zip&lt;/code&gt; file, and place the .img file in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root&lt;/code&gt; folder. Rename the unzipped .img file to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;windows-311.img&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Unzip &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;S3_Trio64V+_Binary-775-785__Win_3.1_English_v._1.70.04_-_PROD.zip&lt;/code&gt; into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root/S3Trio64&lt;/code&gt;. You should end up with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root/S3Trio64/OEMSETUP.INF&lt;/code&gt;, etc.&lt;/li&gt;
+  &lt;li&gt;Unzip &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SB16W3X.ZIP&lt;/code&gt; into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root/SB16&lt;/code&gt;. You should end up with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root/SB16/INSTALL.EXE&lt;/code&gt;, etc.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;hard-disk-image-creation&quot;&gt;Hard Disk Image creation:&lt;/h3&gt;
+
+&lt;p&gt;This step is not required if you use one of the provided HDD .img files.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Start up DOSBox-X.&lt;/li&gt;
+  &lt;li&gt;Click on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOS&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Create blank disk image...&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Choose a hard disk image size and hit OK.
+    &lt;ul&gt;
+      &lt;li&gt;Windows 3.11 supports a maximum of 2GB.&lt;/li&gt;
+      &lt;li&gt;Choose an appropriate size for the installation size of the software you intend to install.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Save the image as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root/windows-311.img&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Close DOSBox-X.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;installation&quot;&gt;Installation:&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Start up DOSBox-X.&lt;/li&gt;
+  &lt;li&gt;Click on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Drive&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mount a disk or CD image file&lt;/code&gt;. Select &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root/windows-311.img&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Click on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Drive&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;D&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mount a disk or CD image file&lt;/code&gt;. Select &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root/Windows 3.11.iso&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Click on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Drive&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;E&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mount folder as hard drive&lt;/code&gt;. Select the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root/S3Trio64&lt;/code&gt; folder.&lt;/li&gt;
+  &lt;li&gt;Click on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Drive&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;F&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mount folder as hard drive&lt;/code&gt;. Select the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root/SB16&lt;/code&gt; folder.&lt;/li&gt;
+  &lt;li&gt;Click on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CPU&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Emulate CPU speed&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pentium 100MHz (~60000 cycles)&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;At the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Z:\&amp;gt;&lt;/code&gt; command prompt, enter these commands:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;D:&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setup.exe&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;At the &lt;strong&gt;&lt;em&gt;Welcome to Windows for Workgroups 3.11 Setup&lt;/em&gt;&lt;/strong&gt; screen, hit Enter.&lt;/li&gt;
+  &lt;li&gt;Hit C to run Custom Setup.&lt;/li&gt;
+  &lt;li&gt;Hit Enter to select &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C:\WINDOWS&lt;/code&gt; as the install folder.&lt;/li&gt;
+  &lt;li&gt;At the hardware identification screen, go up to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Display: VGA&lt;/code&gt; and hit Enter.&lt;/li&gt;
+  &lt;li&gt;Scroll down to the very bottom of the list to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Other (Requires disk provided by a hardware manufacturer)&lt;/code&gt; and hit Enter.&lt;/li&gt;
+  &lt;li&gt;Change the path location from the default &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A:\&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;E:\&lt;/code&gt; and hit Enter.&lt;/li&gt;
+  &lt;li&gt;Select an appropriate screen resolution and color depth and hit Enter.
+    &lt;ul&gt;
+      &lt;li&gt;Note that you WILL be able to easily change this later. This selects the initial resolution/color setting when Windows first starts up.&lt;/li&gt;
+      &lt;li&gt;For Windows 3.11-era games, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;800x600 256 C SF&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;800x600 64K C SF&lt;/code&gt; are good choices. Maxing out the resolution is usually not a good idea as games were often very specific about what resolution/color mode they needed to run.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Confirm that the Display now shows &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;S3 Trio64V 1.70.04&lt;/code&gt; along with your selected resolution, and hit Enter.&lt;/li&gt;
+  &lt;li&gt;At the &lt;strong&gt;&lt;em&gt;Product Number&lt;/em&gt;&lt;/strong&gt; screen, enter whatever name you wish. Leave the Product Number field blank, and click on Continue. Hit Continue again on the confirmation window.
+    &lt;ul&gt;
+      &lt;li&gt;You may need to hit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl-F10&lt;/code&gt; for DOSBox-X to capture your mouse. Hit it again to release it afterwards.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;At the &lt;strong&gt;&lt;em&gt;Setup will perform each optional task…&lt;/em&gt;&lt;/strong&gt; screen, &lt;strong&gt;UNCHECK&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set Up Printers&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set Up Applications Already on Hard Disk(s)&lt;/code&gt;. Leave &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set Up Only Windows Components You Select&lt;/code&gt; &lt;strong&gt;CHECKED&lt;/strong&gt; and hit Continue.&lt;/li&gt;
+  &lt;li&gt;At the &lt;strong&gt;&lt;em&gt;These are optional components…&lt;/em&gt;&lt;/strong&gt; screen, click on Continue.&lt;/li&gt;
+  &lt;li&gt;At the &lt;strong&gt;&lt;em&gt;Network Setup&lt;/em&gt;&lt;/strong&gt; screen, click on Continue.&lt;/li&gt;
+  &lt;li&gt;At the &lt;strong&gt;&lt;em&gt;To set up Windows correction, Setup needs to modify…&lt;/em&gt;&lt;/strong&gt; screen, ensure that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;make all modifications for you&lt;/code&gt; is selected, and click on Continue. Click OK on the confirmation popup afterwards.&lt;/li&gt;
+  &lt;li&gt;At the &lt;strong&gt;&lt;em&gt;Setup can now run a short tutorial…&lt;/em&gt;&lt;/strong&gt; screen, click on Skip Tutorial.&lt;/li&gt;
+  &lt;li&gt;At the &lt;strong&gt;&lt;em&gt;Exit Windows Setup&lt;/em&gt;&lt;/strong&gt; screen, click on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Return to MS-DOS&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;You should be back at the command prompt. Enter the following commands:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;F:&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;install.exe&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;At the &lt;strong&gt;&lt;em&gt;Welcome to the Audio Software installation program&lt;/em&gt;&lt;/strong&gt; screen, hit Enter.&lt;/li&gt;
+  &lt;li&gt;Select &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Full Installation&lt;/code&gt; and hit Enter.&lt;/li&gt;
+  &lt;li&gt;At the &lt;strong&gt;&lt;em&gt;The following path will be used…&lt;/em&gt;&lt;/strong&gt; screen, go down to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Microsoft Windows 3.1 path : None&lt;/code&gt; and hit Enter.&lt;/li&gt;
+  &lt;li&gt;Ensure that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C:\WINDOWS&lt;/code&gt; is in the box, and hit Enter.&lt;/li&gt;
+  &lt;li&gt;You should be back at the &lt;strong&gt;&lt;em&gt;The following path will be used…&lt;/em&gt;&lt;/strong&gt; screen. Ensure that it now says &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;Microsoft Windows 3.1 path : C:\WINDOWS&lt;/code&gt; and hit Enter.&lt;/li&gt;
+  &lt;li&gt;At the &lt;strong&gt;&lt;em&gt;The following settings will be used…&lt;/em&gt;&lt;/strong&gt;, go down to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Interrupt setting : 5&lt;/code&gt; and hit Enter.&lt;/li&gt;
+  &lt;li&gt;Select &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;7&lt;/code&gt; and hit Enter.
+    &lt;ul&gt;
+      &lt;li&gt;The default DOSBox-X sound settings use an IRQ of 7. You can confirm this by clicking on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Sound&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Show Sound Blaster configuration&lt;/code&gt;. If it is using a different IRQ value, select that one instead of 7.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;You should be back at the &lt;strong&gt;&lt;em&gt;The following settings will be used…&lt;/em&gt;&lt;/strong&gt; screen. Ensure that it now says &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Interrupt setting : 7&lt;/code&gt; (or the appropriate value) and hit Enter.&lt;/li&gt;
+  &lt;li&gt;At the red &lt;strong&gt;&lt;em&gt;Backup/Skip/Proceed&lt;/em&gt;&lt;/strong&gt; window, go down to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Proceed&lt;/code&gt; and hit Enter.&lt;/li&gt;
+  &lt;li&gt;At the &lt;strong&gt;&lt;em&gt;Software installation completed&lt;/em&gt;&lt;/strong&gt; screen, hit Enter.&lt;/li&gt;
+  &lt;li&gt;You should be back at the command prompt. Enter the following commands:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C:&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd windows&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;win&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Windows will start up and perform some finalization. Click OK on the &lt;strong&gt;&lt;em&gt;End of Setup&lt;/em&gt;&lt;/strong&gt; window, and close the &lt;strong&gt;&lt;em&gt;Audio Software&lt;/em&gt;&lt;/strong&gt; window.&lt;/li&gt;
+  &lt;li&gt;In Program Manager, click on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;File&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Exit Windows&lt;/code&gt;. If the mouse is not working yet, hit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Alt&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;F&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;X&lt;/code&gt;. Click on OK, or hit Enter.&lt;/li&gt;
+  &lt;li&gt;You should be back at the command prompt. Close DOSBox-X.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;At this point, you have a clean Windows 3.11 hard disk image, ready to use in DOSBox-X or stock DOSBox. I suggest making a backup copy of this so you can revert to a clean copy at any point.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;usage&quot;&gt;Usage:&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Start up DOSBox-X.&lt;/li&gt;
+  &lt;li&gt;Click on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Drive&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mount a disk or CD image file&lt;/code&gt;. Select &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root/windows-311.img&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Click on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CPU&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Emulate CPU speed&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pentium 100MHz (~60000 cycles)&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Enter the following commands at the command prompt:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C:&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd windows&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;win&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;notes&quot;&gt;Notes:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Any changes made to the C drive (ie. installing software) will persist on that specific hard disk image file.&lt;/li&gt;
+  &lt;li&gt;If you wish to mount a CD image to install software, click on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Drive&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;D&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mount a disk or CD image file&lt;/code&gt;. Select the CD image file and install it normally.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>DankGuides</name></author><category term="guides" /><summary type="html">Last updated: 2024-10-08</summary></entry></feed>

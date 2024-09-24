@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" class="html" data-theme="dark"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>
+    
+      Installing Windows 3.1 in DOSBox
+    
+  </title>
+
+  <!-- Begin Jekyll SEO tag v2.7.3 -->
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Installing Windows 3.1 in DOSBox" />
+<meta name="author" content="DankGuides" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Last updated: 2024-10-08" />
+<meta property="og:description" content="Last updated: 2024-10-08" />
+<link rel="canonical" href="http://localhost:4000/guides/windows-3-1-in-dosbox" />
+<meta property="og:url" content="http://localhost:4000/guides/windows-3-1-in-dosbox" />
+<meta property="og:site_name" content="Dank Guides" />
+<meta property="og:image" content="https://soopr.xyz/images/card?url=http://localhost:4000/guides/windows-3-1-in-dosbox" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-10-08T00:00:00-04:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:image" content="https://soopr.xyz/images/card?url=http://localhost:4000/guides/windows-3-1-in-dosbox" />
+<meta property="twitter:title" content="Installing Windows 3.1 in DOSBox" />
+<script type="application/ld+json">
+{"headline":"Installing Windows 3.1 in DOSBox","dateModified":"2024-10-08T00:00:00-04:00","datePublished":"2024-10-08T00:00:00-04:00","description":"Last updated: 2024-10-08","@type":"BlogPosting","author":{"@type":"Person","name":"DankGuides"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/guides/windows-3-1-in-dosbox"},"url":"http://localhost:4000/guides/windows-3-1-in-dosbox","@context":"https://schema.org"}</script>
+<script async defer data-soopr-token="" src="https://sdk.soopr.co/soopr.js"  ></script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Dank Guides" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#00aba9">
+  <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!-- Favicon -->
+
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  
+    <script type="text/javascript">
+  window.addEventListener('load', themeChange);
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme)
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+  function themeChange() {
+    let button = document.querySelector('.theme-toggle');
+
+    button.addEventListener('click', function (e) {
+      let currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        transition();
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        transition();
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    let transition = () => {
+      document.documentElement.classList.add('transition');
+      window.setTimeout(() => {
+        document.documentElement.classList.remove('transition');
+      }, 1000);
+    }
+  }
+</script>
+
+
+  
+</head>
+<body>
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">home..</a>
+<h1 class="post-title">Installing Windows 3.1 in DOSBox</h1>
+<p class="post-date text-bold">
+  
+  
+    <span class="text-upcase">2024-10-08</span>
+  
+
+
+</p>
+
+
+  <div class="">
+    
+  </div>
+
+
+<p><sub><em>Last updated: 2024-10-08</em></sub></p>
+
+<h3 id="contents">Contents</h3>
+<ul>
+  <li><a href="#requirements">Requirements</a></li>
+  <li><a href="#prep">Prep</a></li>
+  <li><a href="#hard-disk-image-creation">Hard Disk Image creation</a></li>
+  <li><a href="#installation">Installation</a></li>
+  <li><a href="#usage">Usage</a></li>
+  <li><a href="#notes">Notes</a></li>
+</ul>
+
+<hr />
+
+<h3 id="requirements">Requirements:</h3>
+
+<ul>
+  <li><a href="https://dosbox-x.com/">DOSBox-X</a> – This is not a hard requirement, as <em>most</em> of this can be done in stock DOSBox. DOSBox-X makes it a lot easier though.</li>
+  <li>A bootable Windows 3.1 install iso</li>
+  <li>S3 Trio64 video drivers for Windows 3.1</li>
+  <li>Sound Blaster 16 drivers</li>
+  <li>An appropriately-sized empty HDD disk image. You can create one via DOSBox-X or use one of the provided images.</li>
+</ul>
+
+<hr />
+
+<h3 id="prep">Prep:</h3>
+
+<ol>
+  <li>Create a new folder to hold everything. We will refer to this folder as <code class="language-plaintext highlighter-rouge">root</code> throughout this guide.</li>
+  <li>Download the files from here: <a href="https://archive.org/details/windows-3.11-in-dosbox">https://archive.org/details/windows-3.11-in-dosbox</a></li>
+  <li>Place the following files in the <code class="language-plaintext highlighter-rouge">root</code> folder:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Windows 3.11.iso</code></li>
+      <li><code class="language-plaintext highlighter-rouge">S3_Trio64V+_Binary-775-785__Win_3.1_English_v._1.70.04_-_PROD.zip</code></li>
+      <li><code class="language-plaintext highlighter-rouge">SB16W3X.ZIP</code></li>
+    </ul>
+  </li>
+  <li>If you wish to use one of the provided HDD images, unzip the appropriate <code class="language-plaintext highlighter-rouge">hdd-*.zip</code> file, and place the .img file in the <code class="language-plaintext highlighter-rouge">root</code> folder. Rename the unzipped .img file to <code class="language-plaintext highlighter-rouge">windows-311.img</code>.</li>
+  <li>Unzip <code class="language-plaintext highlighter-rouge">S3_Trio64V+_Binary-775-785__Win_3.1_English_v._1.70.04_-_PROD.zip</code> into <code class="language-plaintext highlighter-rouge">root/S3Trio64</code>. You should end up with <code class="language-plaintext highlighter-rouge">root/S3Trio64/OEMSETUP.INF</code>, etc.</li>
+  <li>Unzip <code class="language-plaintext highlighter-rouge">SB16W3X.ZIP</code> into <code class="language-plaintext highlighter-rouge">root/SB16</code>. You should end up with <code class="language-plaintext highlighter-rouge">root/SB16/INSTALL.EXE</code>, etc.</li>
+</ol>
+
+<hr />
+
+<h3 id="hard-disk-image-creation">Hard Disk Image creation:</h3>
+
+<p>This step is not required if you use one of the provided HDD .img files.</p>
+
+<ol>
+  <li>Start up DOSBox-X.</li>
+  <li>Click on <code class="language-plaintext highlighter-rouge">DOS</code>, then <code class="language-plaintext highlighter-rouge">Create blank disk image...</code></li>
+  <li>Choose a hard disk image size and hit OK.
+    <ul>
+      <li>Windows 3.11 supports a maximum of 2GB.</li>
+      <li>Choose an appropriate size for the installation size of the software you intend to install.</li>
+    </ul>
+  </li>
+  <li>Save the image as <code class="language-plaintext highlighter-rouge">root/windows-311.img</code>.</li>
+  <li>Close DOSBox-X.</li>
+</ol>
+
+<hr />
+
+<h3 id="installation">Installation:</h3>
+
+<ol>
+  <li>Start up DOSBox-X.</li>
+  <li>Click on <code class="language-plaintext highlighter-rouge">Drive</code>, then <code class="language-plaintext highlighter-rouge">C</code>, then <code class="language-plaintext highlighter-rouge">Mount a disk or CD image file</code>. Select <code class="language-plaintext highlighter-rouge">root/windows-311.img</code>.</li>
+  <li>Click on <code class="language-plaintext highlighter-rouge">Drive</code>, then <code class="language-plaintext highlighter-rouge">D</code>, then <code class="language-plaintext highlighter-rouge">Mount a disk or CD image file</code>. Select <code class="language-plaintext highlighter-rouge">root/Windows 3.11.iso</code>.</li>
+  <li>Click on <code class="language-plaintext highlighter-rouge">Drive</code>, then <code class="language-plaintext highlighter-rouge">E</code>, then <code class="language-plaintext highlighter-rouge">Mount folder as hard drive</code>. Select the <code class="language-plaintext highlighter-rouge">root/S3Trio64</code> folder.</li>
+  <li>Click on <code class="language-plaintext highlighter-rouge">Drive</code>, then <code class="language-plaintext highlighter-rouge">F</code>, then <code class="language-plaintext highlighter-rouge">Mount folder as hard drive</code>. Select the <code class="language-plaintext highlighter-rouge">root/SB16</code> folder.</li>
+  <li>Click on <code class="language-plaintext highlighter-rouge">CPU</code>, then <code class="language-plaintext highlighter-rouge">Emulate CPU speed</code>, then <code class="language-plaintext highlighter-rouge">Pentium 100MHz (~60000 cycles)</code>.</li>
+  <li>At the <code class="language-plaintext highlighter-rouge">Z:\&gt;</code> command prompt, enter these commands:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">D:</code></li>
+      <li><code class="language-plaintext highlighter-rouge">setup.exe</code></li>
+    </ul>
+  </li>
+  <li>At the <strong><em>Welcome to Windows for Workgroups 3.11 Setup</em></strong> screen, hit Enter.</li>
+  <li>Hit C to run Custom Setup.</li>
+  <li>Hit Enter to select <code class="language-plaintext highlighter-rouge">C:\WINDOWS</code> as the install folder.</li>
+  <li>At the hardware identification screen, go up to <code class="language-plaintext highlighter-rouge">Display: VGA</code> and hit Enter.</li>
+  <li>Scroll down to the very bottom of the list to <code class="language-plaintext highlighter-rouge">Other (Requires disk provided by a hardware manufacturer)</code> and hit Enter.</li>
+  <li>Change the path location from the default <code class="language-plaintext highlighter-rouge">A:\</code> to <code class="language-plaintext highlighter-rouge">E:\</code> and hit Enter.</li>
+  <li>Select an appropriate screen resolution and color depth and hit Enter.
+    <ul>
+      <li>Note that you WILL be able to easily change this later. This selects the initial resolution/color setting when Windows first starts up.</li>
+      <li>For Windows 3.11-era games, <code class="language-plaintext highlighter-rouge">800x600 256 C SF</code> or <code class="language-plaintext highlighter-rouge">800x600 64K C SF</code> are good choices. Maxing out the resolution is usually not a good idea as games were often very specific about what resolution/color mode they needed to run.</li>
+    </ul>
+  </li>
+  <li>Confirm that the Display now shows <code class="language-plaintext highlighter-rouge">S3 Trio64V 1.70.04</code> along with your selected resolution, and hit Enter.</li>
+  <li>At the <strong><em>Product Number</em></strong> screen, enter whatever name you wish. Leave the Product Number field blank, and click on Continue. Hit Continue again on the confirmation window.
+    <ul>
+      <li>You may need to hit <code class="language-plaintext highlighter-rouge">Ctrl-F10</code> for DOSBox-X to capture your mouse. Hit it again to release it afterwards.</li>
+    </ul>
+  </li>
+  <li>At the <strong><em>Setup will perform each optional task…</em></strong> screen, <strong>UNCHECK</strong> <code class="language-plaintext highlighter-rouge">Set Up Printers</code> and <code class="language-plaintext highlighter-rouge">Set Up Applications Already on Hard Disk(s)</code>. Leave <code class="language-plaintext highlighter-rouge">Set Up Only Windows Components You Select</code> <strong>CHECKED</strong> and hit Continue.</li>
+  <li>At the <strong><em>These are optional components…</em></strong> screen, click on Continue.</li>
+  <li>At the <strong><em>Network Setup</em></strong> screen, click on Continue.</li>
+  <li>At the <strong><em>To set up Windows correction, Setup needs to modify…</em></strong> screen, ensure that <code class="language-plaintext highlighter-rouge">make all modifications for you</code> is selected, and click on Continue. Click OK on the confirmation popup afterwards.</li>
+  <li>At the <strong><em>Setup can now run a short tutorial…</em></strong> screen, click on Skip Tutorial.</li>
+  <li>At the <strong><em>Exit Windows Setup</em></strong> screen, click on <code class="language-plaintext highlighter-rouge">Return to MS-DOS</code>.</li>
+  <li>You should be back at the command prompt. Enter the following commands:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">F:</code></li>
+      <li><code class="language-plaintext highlighter-rouge">install.exe</code></li>
+    </ul>
+  </li>
+  <li>At the <strong><em>Welcome to the Audio Software installation program</em></strong> screen, hit Enter.</li>
+  <li>Select <code class="language-plaintext highlighter-rouge">Full Installation</code> and hit Enter.</li>
+  <li>At the <strong><em>The following path will be used…</em></strong> screen, go down to <code class="language-plaintext highlighter-rouge">Microsoft Windows 3.1 path : None</code> and hit Enter.</li>
+  <li>Ensure that <code class="language-plaintext highlighter-rouge">C:\WINDOWS</code> is in the box, and hit Enter.</li>
+  <li>You should be back at the <strong><em>The following path will be used…</em></strong> screen. Ensure that it now says <code class="language-plaintext highlighter-rouge">"Microsoft Windows 3.1 path : C:\WINDOWS</code> and hit Enter.</li>
+  <li>At the <strong><em>The following settings will be used…</em></strong>, go down to <code class="language-plaintext highlighter-rouge">Interrupt setting : 5</code> and hit Enter.</li>
+  <li>Select <code class="language-plaintext highlighter-rouge">7</code> and hit Enter.
+    <ul>
+      <li>The default DOSBox-X sound settings use an IRQ of 7. You can confirm this by clicking on <code class="language-plaintext highlighter-rouge">Sound</code>, then <code class="language-plaintext highlighter-rouge">Show Sound Blaster configuration</code>. If it is using a different IRQ value, select that one instead of 7.</li>
+    </ul>
+  </li>
+  <li>You should be back at the <strong><em>The following settings will be used…</em></strong> screen. Ensure that it now says <code class="language-plaintext highlighter-rouge">Interrupt setting : 7</code> (or the appropriate value) and hit Enter.</li>
+  <li>At the red <strong><em>Backup/Skip/Proceed</em></strong> window, go down to <code class="language-plaintext highlighter-rouge">Proceed</code> and hit Enter.</li>
+  <li>At the <strong><em>Software installation completed</em></strong> screen, hit Enter.</li>
+  <li>You should be back at the command prompt. Enter the following commands:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">C:</code></li>
+      <li><code class="language-plaintext highlighter-rouge">cd windows</code></li>
+      <li><code class="language-plaintext highlighter-rouge">win</code></li>
+    </ul>
+  </li>
+  <li>Windows will start up and perform some finalization. Click OK on the <strong><em>End of Setup</em></strong> window, and close the <strong><em>Audio Software</em></strong> window.</li>
+  <li>In Program Manager, click on <code class="language-plaintext highlighter-rouge">File</code>, then <code class="language-plaintext highlighter-rouge">Exit Windows</code>. If the mouse is not working yet, hit <code class="language-plaintext highlighter-rouge">Alt</code>, then <code class="language-plaintext highlighter-rouge">F</code>, then <code class="language-plaintext highlighter-rouge">X</code>. Click on OK, or hit Enter.</li>
+  <li>You should be back at the command prompt. Close DOSBox-X.</li>
+</ol>
+
+<p>At this point, you have a clean Windows 3.11 hard disk image, ready to use in DOSBox-X or stock DOSBox. I suggest making a backup copy of this so you can revert to a clean copy at any point.</p>
+
+<hr />
+
+<h3 id="usage">Usage:</h3>
+
+<ol>
+  <li>Start up DOSBox-X.</li>
+  <li>Click on <code class="language-plaintext highlighter-rouge">Drive</code>, then <code class="language-plaintext highlighter-rouge">C</code>, then <code class="language-plaintext highlighter-rouge">Mount a disk or CD image file</code>. Select <code class="language-plaintext highlighter-rouge">root/windows-311.img</code>.</li>
+  <li>Click on <code class="language-plaintext highlighter-rouge">CPU</code>, then <code class="language-plaintext highlighter-rouge">Emulate CPU speed</code>, then <code class="language-plaintext highlighter-rouge">Pentium 100MHz (~60000 cycles)</code>.</li>
+  <li>Enter the following commands at the command prompt:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">C:</code></li>
+      <li><code class="language-plaintext highlighter-rouge">cd windows</code></li>
+      <li><code class="language-plaintext highlighter-rouge">win</code></li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="notes">Notes:</h3>
+<ul>
+  <li>Any changes made to the C drive (ie. installing software) will persist on that specific hard disk image file.</li>
+  <li>If you wish to mount a CD image to install software, click on <code class="language-plaintext highlighter-rouge">Drive</code>, then <code class="language-plaintext highlighter-rouge">D</code>, then <code class="language-plaintext highlighter-rouge">Mount a disk or CD image file</code>. Select the CD image file and install it normally.</li>
+</ul>
+
+
+        
+          <button title="Toggle Theme" class="theme-toggle">
+  <svg viewBox="0 0 32 32" width="24" height="24" fill="currentcolor">
+    <circle cx="16" cy="16" r="14" fill="none" stroke="currentcolor" stroke-width="4"></circle>
+    <path d="
+             M 16 0
+             A 16 16 0 0 0 16 32
+             z">
+    </path>
+  </svg>
+</button>
+
+        
+        <div class="credits">&copy;&nbsp;2024&nbsp;DankGuides
+          &nbsp;</div>
+      </div>
+    </main>
+  </body>
+</html>
